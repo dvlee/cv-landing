@@ -3,14 +3,12 @@ import {
   IconBolt,
   IconBriefcase,
   IconCap,
-  IconCar,
   IconCert,
   IconClock,
   IconGlobe,
   IconLayers,
   IconMail,
   IconPhone,
-  IconPin,
   IconTelegram,
   skillIcons,
 } from "./components/icons";
@@ -113,7 +111,7 @@ export default function Home() {
             {"<"} {profile.role} {"/>"}
           </p>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
-            {profile.age} · {profile.location}. {profile.relocation}.
+            {profile.age} · {profile.location}.
           </p>
 
           {/* contacts */}
@@ -147,19 +145,17 @@ export default function Home() {
         {/* photo */}
         <div className="order-1 flex justify-center lg:order-2">
           <div className="relative animate-float">
-            {/* rotating glow ring */}
-            <div className="absolute -inset-6 -z-10 rounded-full bg-[conic-gradient(from_0deg,var(--color-neon-cyan),var(--color-neon-purple),var(--color-neon-pink),var(--color-neon-cyan))] opacity-30 blur-2xl animate-spin-slow" />
-            <div className="holo-border relative h-64 w-64 overflow-hidden rounded-full sm:h-80 sm:w-80">
-              <Image
-                src="/me.png"
-                alt={`${profile.name} — ${profile.role}`}
-                fill
-                priority
-                sizes="(max-width: 640px) 256px, 320px"
-                className="object-cover"
-              />
-              <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-neon-cyan/30" />
-            </div>
+            {/* ambient glow behind the cutout */}
+            <div className="absolute -inset-8 -z-10 rounded-full bg-[radial-gradient(circle_at_center,var(--color-neon-cyan),transparent_70%)] opacity-30 blur-3xl animate-pulse-glow" />
+            <Image
+              src="/me.png"
+              alt={`${profile.name} — ${profile.role}`}
+              width={1684}
+              height={2528}
+              priority
+              sizes="(max-width: 640px) 260px, 340px"
+              className="relative h-auto w-[260px] object-contain drop-shadow-[0_0_25px_var(--color-neon-cyan)] sm:w-[340px]"
+            />
             {/* orbit badge */}
             <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-neon-cyan/40 bg-void px-4 py-1.5 font-mono text-xs tracking-widest text-neon-cyan">
               React · Next · TS
@@ -382,7 +378,7 @@ export default function Home() {
           </Reveal>
 
           {/* Car */}
-          <Reveal delay={140} className="glass rounded-2xl p-6">
+          {/* <Reveal delay={140} className="glass rounded-2xl p-6">
             <div className="mb-4 flex items-center gap-2.5">
               <IconCar className="h-5 w-5 text-neon-cyan" />
               <h3 className="font-display text-lg font-bold">Авто</h3>
@@ -393,10 +389,10 @@ export default function Home() {
                 Права кат. B
               </span>
             </div>
-          </Reveal>
+          </Reveal> */}
 
           {/* Location */}
-          <Reveal delay={120} className="glass rounded-2xl p-6">
+          {/* <Reveal delay={120} className="glass rounded-2xl p-6">
             <div className="mb-4 flex items-center gap-2.5">
               <IconPin className="h-5 w-5 text-neon-pink" />
               <h3 className="font-display text-lg font-bold">Локация</h3>
@@ -405,7 +401,7 @@ export default function Home() {
             <p className="mt-2 font-mono text-xs text-muted">
               {profile.relocation}
             </p>
-          </Reveal>
+          </Reveal> */}
 
           {/* Education */}
           <Reveal delay={80} className="glass rounded-2xl p-6">
