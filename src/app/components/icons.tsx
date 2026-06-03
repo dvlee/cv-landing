@@ -107,6 +107,55 @@ export function IconLayers(p: P) {
   );
 }
 
+export function IconRocket(p: P) {
+  return (
+    <svg aria-hidden="true" {...base} {...p}>
+      <path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2 0-2.8a2 2 0 0 0-3 0Z" />
+      <path d="M12 15 9 12a14 14 0 0 1 3-9 12 12 0 0 1 7-2 12 12 0 0 1-2 7 14 14 0 0 1-5 2Z" />
+      <path d="M9 12H5s.5-2.2 2-3 4 0 4 0M12 15v4s2.2-.5 3-2 0-4 0-4" />
+      <circle cx="15" cy="9" r="1" />
+    </svg>
+  );
+}
+export function IconLock(p: P) {
+  return (
+    <svg aria-hidden="true" {...base} {...p}>
+      <rect x="4.5" y="10" width="15" height="11" rx="2" />
+      <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+    </svg>
+  );
+}
+export function IconGithub(p: P) {
+  return (
+    <svg aria-hidden="true" {...base} {...p}>
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7A5.2 5.2 0 0 0 20 4.8a4.9 4.9 0 0 0-.1-3.6s-1.1-.3-3.6 1.4a12.3 12.3 0 0 0-6.6 0C7.2.9 6.1 1.2 6.1 1.2A4.9 4.9 0 0 0 6 4.8a5.2 5.2 0 0 0-1.4 3.6c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-.9 2.6V22" />
+    </svg>
+  );
+}
+export function IconLinkedin(p: P) {
+  return (
+    <svg aria-hidden="true" {...base} {...p}>
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z" />
+      <rect x="2" y="9" width="4" height="12" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
+export function IconExternal(p: P) {
+  return (
+    <svg aria-hidden="true" {...base} {...p}>
+      <path d="M15 3h6v6M10 14 21 3M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+    </svg>
+  );
+}
+export function IconDownload(p: P) {
+  return (
+    <svg aria-hidden="true" {...base} {...p}>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+    </svg>
+  );
+}
+
 /* ---- Skill / tech icons ---- */
 export function IconReact(p: P) {
   return (

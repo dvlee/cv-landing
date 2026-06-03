@@ -1,7 +1,7 @@
 export const profile = {
   name: "Ли Денис Витальевич",
   shortName: "Денис Ли",
-  role: "Senior Frontend (React.js) Developer",
+  role: "Senior Frontend Engineer",
   age: "37 лет",
   born: "18 мая 1989",
   location: "г. Ташкент, Узбекистан",
@@ -11,13 +11,16 @@ export const profile = {
   telegram: "@dvlee69",
   telegramUrl: "https://t.me/dvlee69",
   email: "dvlee69@gmail.com",
+  github: "https://github.com/dvlee",
+  linkedin: "https://www.linkedin.com/in/dvlee69/",
+  hh: "https://tashkent.hh.uz/resume/6d4ad8eeff071d67790039ed1f395454374a51",
   about:
     "Основной мой фокус — фронтенд на React, Next.js и TypeScript, но у меня также есть опыт работы с бэкэндом на PHP (Yii, WordPress, Drupal). Я постоянно развиваюсь и расширяю свои знания: решаю алгоритмические задачи на Codewars, что помогает улучшать логическое мышление и навыки оптимизации, а также интересуюсь Node.js, Python и Docker, чтобы углубить знания в бэкэнде и DevOps.",
 };
 
 export const stats = [
-  { value: "14+", label: "лет в разработке", sub: "14 лет 11 месяцев" },
-  { value: "12", label: "компаний и проектов", sub: "от стартапов до e-gov" },
+  { value: "15+", label: "лет в разработке", sub: "15 лет 9 месяцев" },
+  { value: "11", label: "компаний и проектов", sub: "от стартапов до e-gov" },
   { value: "Senior", label: "уровень", sub: "Frontend / React" },
   { value: "B1", label: "английский", sub: "+ корейский A1" },
 ];
@@ -30,19 +33,143 @@ export const employmentTypes = [
 
 export const workFormats = ["На месте работодателя", "Удалённо", "Гибрид"];
 
-export type Skill = { name: string; icon: string };
-export const skills: Skill[] = [
-  { name: "React.JS", icon: "react" },
-  { name: "Next.js", icon: "next" },
-  { name: "TypeScript", icon: "ts" },
-  { name: "JavaScript", icon: "js" },
-  { name: "React-Redux", icon: "redux" },
-  { name: "RTK Query", icon: "redux" },
-  { name: "REST API", icon: "api" },
-  { name: "Git", icon: "git" },
-  { name: "Кроссбраузерная вёрстка", icon: "layout" },
-  { name: "БЭМ", icon: "css" },
-  { name: "Работа в команде", icon: "team" },
+export type SkillGroup = { title: string; icon: string; items: string[] };
+export const skillGroups: SkillGroup[] = [
+  {
+    title: "Core",
+    icon: "react",
+    items: ["React", "Next.js", "TypeScript", "JavaScript (ES6+)"],
+  },
+  {
+    title: "State & Data",
+    icon: "redux",
+    items: ["Redux Toolkit", "RTK Query", "TanStack Query", "Zustand"],
+  },
+  {
+    title: "UI & стили",
+    icon: "css",
+    items: [
+      "Material UI",
+      "Tailwind CSS",
+      "SCSS / CSS Modules",
+      "styled-components",
+      "shadcn/ui",
+    ],
+  },
+  {
+    title: "Архитектура",
+    icon: "layout",
+    items: ["Atomic Design", "Feature-Sliced Design", "Дизайн-системы"],
+  },
+  {
+    title: "API & Realtime",
+    icon: "api",
+    items: ["REST API", "WebSocket", "GraphQL", "Axios"],
+  },
+  {
+    title: "Качество & процессы",
+    icon: "team",
+    items: [
+      "Code review",
+      "Менторинг",
+      "Core Web Vitals / перформанс",
+      "Доступность (a11y)",
+      "Git",
+    ],
+  },
+];
+
+// Понимание есть, использую по необходимости (не основной фокус)
+export const skillsFamiliar = [
+  "Jest",
+  "Vitest",
+  "Playwright",
+  "Vite",
+  "Webpack",
+  "ESLint",
+  "Biome / Prettier",
+  "CI/CD",
+];
+
+export type Project = {
+  title: string;
+  context: string;
+  role: string;
+  url?: string;
+  nda?: boolean;
+  stack: string[];
+  points: string[];
+};
+
+export const projects: Project[] = [
+  {
+    title: "OpenBank",
+    context: "Финтех · онлайн-банк",
+    role: "Ведущий фронтенд-разработчик",
+    url: "https://openbank.uz",
+    stack: ["React", "Next.js", "TypeScript", "REST API"],
+    points: [
+      "Организация архитектуры веб-приложения",
+      "Клиентские интерфейсы с интеграцией банковских REST API и WebSocket.",
+      "Code review, единый код-стайл и поддерживаемость кодовой базы.",
+    ],
+  },
+  {
+    title: "E-Gov — портал госуслуг",
+    context: "Госсектор · электронное правительство",
+    role: "Ведущий специалист, фронтенд",
+    url: "https://egov.uz",
+    stack: ["React", "Next.js", "TypeScript", "Material UI"],
+    points: [
+      "Сложные дашборды, админ-панели и публичные интерфейсы портала.",
+      "Менторинг младших разработчиков, помощь с архитектурой компонентов.",
+      "Кроссбраузерность и адаптивность под массовую пользовательскую нагрузку.",
+    ],
+  },
+  {
+    title: "Интернет-банкинг — личный кабинет",
+    context: "Финтех · веб-банкинг",
+    role: "Фронтенд-разработчик",
+    nda: true,
+    stack: ["React", "TypeScript", "RTK Query", "WebSocket"],
+    points: [
+      "Кабинет интернет-банкинга: переводы, платежи, история операций.",
+      "Реалтайм-обновления через WebSocket, оптимизация клиентской части.",
+    ],
+  },
+  {
+    title: "Корпоративные порталы и информационные системы",
+    context: "Enterprise · внутренние системы",
+    role: "Фронтенд-разработчик",
+    nda: true,
+    stack: ["React", "TypeScript", "Atomic Design", "FSD"],
+    points: [
+      "Интерфейсы корпоративных порталов и ИС по Atomic Design / Feature-Sliced Design.",
+      "Переиспользуемые компоненты и общие UI-паттерны для ускорения разработки.",
+    ],
+  },
+  {
+    title: "Админки и аналитические дашборды",
+    context: "Enterprise · data-heavy UI",
+    role: "Фронтенд-разработчик",
+    nda: true,
+    stack: ["React", "TypeScript", "REST API", "Charts"],
+    points: [
+      "Админ-панели и дашборды: таблицы, фильтры, визуализация данных.",
+      "Юнит-тесты ключевой логики, взаимодействие с QA-командой.",
+    ],
+  },
+  {
+    title: "Система электронного документооборота",
+    context: "Enterprise · документооборот",
+    role: "Фронтенд-разработчик",
+    nda: true,
+    stack: ["React", "TypeScript", "Material UI"],
+    points: [
+      "Кабинет ЭДО: работа с документами, статусами и ролями пользователей.",
+      "Акцент на доступность (a11y) и удобство для ежедневной работы операторов.",
+    ],
+  },
 ];
 
 export type Job = {
@@ -53,6 +180,8 @@ export type Job = {
   duration: string;
   location: string;
   points: string[];
+  current?: boolean;
+  compact?: boolean;
 };
 
 export const experience: Job[] = [
@@ -63,13 +192,13 @@ export const experience: Job[] = [
     period: "Декабрь 2023 — настоящее время",
     duration: "2 года 6 месяцев",
     location: "Ташкент",
+    current: true,
     points: [
-      "Создание и поддержка пользовательских интерфейсов на React, Next.js, TypeScript.",
-      "Разработка удобных и интуитивно понятных интерфейсов взаимодействия с системой.",
-      "Интеграция с бэкендом через REST API и WebSocket для быстрого обмена данными.",
-      "Оптимизация производительности клиентской части, стабильность и скорость работы.",
-      "Код-ревью: оценка кода коллег, контроль стандартов, читабельности и поддерживаемости.",
-      "Консультирование, помощь в отладке кода и разборе технических задач.",
+      "Развиваю клиентские интерфейсы банковских продуктов на React, Next.js и TypeScript.",
+      "Интеграция с бэкендом через REST API и WebSocket для реалтайм-обмена данными.",
+      "Оптимизация производительности клиентской части (Core Web Vitals), стабильность и скорость работы.",
+      "Code review, поддержка код-стайла, читаемости и масштабируемости кодовой базы.",
+      "Менторинг младших разработчиков, помощь в отладке и разборе технических задач.",
     ],
   },
   {
@@ -94,10 +223,10 @@ export const experience: Job[] = [
     duration: "2 года 6 месяцев",
     location: "Ташкент",
     points: [
-      "Сложные интерфейсы дашбордов, веб-сайтов и админ-панелей на React.js, Next.js, TypeScript, MaterialUI.",
-      "Создание и оптимизация UI с акцентом на производительность и масштабируемость.",
-      "Интеграция с бэкендом через REST API и WebSocket.",
-      "Кроссбраузерная совместимость, адаптивный дизайн, исправление багов и новые возможности.",
+      "Сложные дашборды, веб-сайты и админ-панели на React.js, Next.js, TypeScript, Material UI.",
+      "Менторинг 1–2 младших разработчиков, выстраивание архитектурных подходов к компонентам.",
+      "Оптимизация UI с акцентом на производительность и масштабируемость под высокую нагрузку.",
+      "Интеграция через REST API и WebSocket, кроссбраузерность и адаптивный дизайн.",
     ],
   },
   {
@@ -144,6 +273,7 @@ export const experience: Job[] = [
     period: "Март 2015 — Октябрь 2015",
     duration: "8 месяцев",
     location: "Ташкент",
+    compact: true,
     points: [
       "HTML-шаблоны по дизайнам с адаптивностью и кроссбраузерностью.",
       "Сайты и темы для WordPress, оптимизация производительности и UX.",
@@ -155,6 +285,7 @@ export const experience: Job[] = [
     period: "Сентябрь 2014 — Декабрь 2014",
     duration: "4 месяца",
     location: "Ташкент",
+    compact: true,
     points: [
       "Адаптивные макеты из готовых дизайнов с точным соответствием.",
       "Интеграция вёрстки в веб-приложения, поддержка существующих проектов.",
@@ -167,6 +298,7 @@ export const experience: Job[] = [
     period: "Апрель 2013 — Сентябрь 2014",
     duration: "1 год 6 месяцев",
     location: "Ташкент",
+    compact: true,
     points: [
       "Полный цикл разработки сайтов на Yii Framework: серверная логика, БД, фронтенд.",
       "Адаптивная вёрстка и email-шаблоны для всех популярных почтовых клиентов.",
@@ -179,6 +311,7 @@ export const experience: Job[] = [
     period: "Сентябрь 2011 — Март 2013",
     duration: "1 год 7 месяцев",
     location: "Ташкент",
+    compact: true,
     points: [
       "Разработка сайтов на CMS Drupal: пользовательские темы и модули.",
       "Поддержка и оптимизация существующих сайтов, адаптивная вёрстка.",
@@ -190,6 +323,7 @@ export const experience: Job[] = [
     period: "Сентябрь 2010 — Июль 2011",
     duration: "11 месяцев",
     location: "Ташкент",
+    compact: true,
     points: [
       "Вёрстка адаптивных интерфейсов по современным стандартам.",
       "Интеграция вёрстки с Zend Framework.",
@@ -199,8 +333,8 @@ export const experience: Job[] = [
 
 export const languages = [
   { name: "Русский", level: "Родной", pct: 100 },
-  { name: "Английский", level: "B2 · Средне-продвинутый", pct: 75 },
-  { name: "Корейский", level: "A2 · Элементарный", pct: 35 },
+  { name: "Английский", level: "B1 · Средний", pct: 60 },
+  { name: "Корейский", level: "A1 · Базовый", pct: 25 },
 ];
 
 export const education = {
