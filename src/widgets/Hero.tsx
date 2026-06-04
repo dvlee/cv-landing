@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { profile } from "@/entities/profile";
 import {
   IconExternal,
@@ -9,6 +8,7 @@ import {
   IconTelegram,
   PrintButton,
 } from "@/shared/ui";
+import Image from "next/image";
 
 export function Hero() {
   return (
@@ -121,7 +121,7 @@ export function Hero() {
         {/* <div className="relative animate-float"> */}
         <div className="relative">
           {/* ambient glow behind the cutout */}
-          <div className="absolute -inset-8 -z-10 rounded-full bg-[radial-gradient(circle_at_center,var(--color-neon-cyan),transparent_70%)] opacity-30 blur-3xl animate-pulse-glow" />
+          <div className="absolute inset-20 -z-10 rounded-full bg-[radial-gradient(circle_at_center,var(--color-neon-cyan),transparent_70%)] opacity-30 blur-3xl animate-pulse-glow" />
           <Image
             src="/me.png"
             alt={`${profile.name} — ${profile.role}`}
@@ -130,7 +130,7 @@ export function Hero() {
             priority
             sizes="(max-width: 640px) 260px, 340px"
             // className="relative h-auto w-[260px] object-contain drop-shadow-[0_0_25px_var(--color-neon-cyan)] sm:w-[340px]"
-            className="relative h-auto max-w-[420px] aspect-[1/1.2] object-top object-cover"
+            className="relative h-auto max-w-full aspect-[1/1.2] object-top object-cover"
           />
           {/* orbit badge */}
           <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-neon-cyan/40 bg-void px-4 py-1.5 font-mono text-xs tracking-widest text-neon-cyan">

@@ -24,8 +24,8 @@ export function NavBar() {
           href="#top"
           className="font-display text-lg font-bold tracking-tight"
         >
-          <span className="text-gradient">DL</span>
-          <span className="text-fg/60">_dev</span>
+          <span className="text-gradient">dvlee</span>
+          {/* <span className="text-fg/60">.pro</span> */}
         </a>
         <div className="hidden gap-7 font-mono text-xs uppercase tracking-widest md:flex">
           {links.map((l) => (

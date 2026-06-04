@@ -1,7 +1,7 @@
 import { About } from "@/widgets/About";
 import { Additional } from "@/widgets/Additional";
 import { Education } from "@/widgets/Education";
-import { Experience } from "@/widgets/experience";
+import { Experience } from "@/widgets/Experience";
 import { Hero } from "@/widgets/Hero";
 import { NavBar } from "@/widgets/NavBar";
 import { Projects } from "@/widgets/Projects";

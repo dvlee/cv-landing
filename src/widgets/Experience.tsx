@@ -1,6 +1,6 @@
 import { experience, JobCardRow } from "@/entities/experience";
 import { IconBriefcase, Reveal, SectionTitle } from "@/shared/ui";
-import { JobCard } from "../../../entities/experience/ui/JobCard";
+import { JobCard } from "../entities/experience/ui/JobCard";
 
 export function Experience() {
   const fullJobs = experience.filter((job) => !job.compact);
