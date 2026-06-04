@@ -4,7 +4,7 @@ import {
   Science_Gothic,
   Space_Grotesk,
 } from "next/font/google";
-import { profile } from "./data";
+import { profile } from "@/entities/profile";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";

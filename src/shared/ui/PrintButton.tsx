@@ -1,6 +1,6 @@
 import { IconDownload } from "./icons";
 
-export default function PrintButton({
+export function PrintButton({
   className = "",
   label = "Скачать PDF",
 }: {

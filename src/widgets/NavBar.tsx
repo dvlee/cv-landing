@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { profile } from "../data";
+import { profile } from "@/entities/profile";
+import { useScrollSpy } from "@/shared/lib/use-scroll-spy";
 
 const links = [
   { id: "about", label: "about" },
@@ -12,26 +12,10 @@ const links = [
   { id: "more", label: "more" },
 ];
 
-export default function NavBar() {
-  const [active, setActive] = useState<string>("");
+const sectionIds = links.map((l) => l.id);
 
-  useEffect(() => {
-    const sections = links
-      .map((l) => document.getElementById(l.id))
-      .filter((el): el is HTMLElement => el !== null);
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible[0]) setActive(visible[0].target.id);
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
-    );
-    for (const s of sections) io.observe(s);
-    return () => io.disconnect();
-  }, []);
+export function NavBar() {
+  const active = useScrollSpy(sectionIds);
 
   return (
     <nav className="sticky top-0 z-50 mb-2 w-full border-b border-white/5 bg-void/70 backdrop-blur-xl print:hidden">

@@ -9,7 +9,7 @@ type Props = {
   as?: "div" | "section" | "li" | "article";
 };
 
-export default function Reveal({
+export function Reveal({
   children,
   className = "",
   delay = 0,
