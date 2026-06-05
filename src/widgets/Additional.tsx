@@ -1,14 +1,20 @@
-import { languages } from "@/entities/language";
-import { employmentTypes, workFormats } from "@/entities/profile";
+import { getLanguages } from "@/entities/language";
+import { getEmploymentTypes, getWorkFormats } from "@/entities/profile";
+import { getDictionary, type Locale } from "@/shared/i18n";
 import { IconBolt, IconGlobe, Reveal, SectionTitle } from "@/shared/ui";
 
-export function Additional() {
+export function Additional({ locale }: { locale: Locale }) {
+  const languages = getLanguages(locale);
+  const workFormats = getWorkFormats(locale);
+  const employmentTypes = getEmploymentTypes(locale);
+  const { additional: t } = getDictionary(locale).sections;
+
   return (
     <section id="more" className="py-16 sm:py-20">
       <Reveal>
         <SectionTitle
-          kicker="// extra modules"
-          title="Дополнительно"
+          kicker={t.kicker}
+          title={t.title}
           icon={<IconGlobe className="h-7 w-7" />}
         />
       </Reveal>
@@ -18,7 +24,7 @@ export function Additional() {
         <Reveal className="glass rounded-2xl p-6">
           <div className="mb-5 flex items-center gap-2.5">
             <IconGlobe className="h-5 w-5 text-neon-cyan" />
-            <h3 className="font-display text-lg font-bold">Языки</h3>
+            <h3 className="font-display text-lg font-bold">{t.languages}</h3>
           </div>
           <div className="space-y-5">
             {languages.map((l) => (
@@ -44,7 +50,7 @@ export function Additional() {
         <Reveal delay={80} className="glass rounded-2xl p-6">
           <div className="mb-4 flex items-center gap-2.5">
             <IconBolt className="h-5 w-5 text-neon-purple" />
-            <h3 className="font-display text-lg font-bold">Формат работы</h3>
+            <h3 className="font-display text-lg font-bold">{t.workFormat}</h3>
           </div>
           <div className="flex flex-wrap gap-2">
             {workFormats.map((w) => (

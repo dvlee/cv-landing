@@ -1,7 +1,15 @@
 import type { Job } from "@/entities/experience";
 import { IconClock, Reveal } from "@/shared/ui";
 
-export function JobCard({ job, index }: { job: Job; index: number }) {
+export function JobCard({
+  job,
+  index,
+  nowLabel,
+}: {
+  job: Job;
+  index: number;
+  nowLabel: string;
+}) {
   return (
     <Reveal as="article" delay={Math.min(index, 4) * 60} className="relative">
       {/* node */}
@@ -37,7 +45,7 @@ export function JobCard({ job, index }: { job: Job; index: number }) {
               {job.current && (
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-neon-cyan/40 bg-neon-cyan/10 px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-widest text-neon-cyan">
                   <span className="h-1.5 w-1.5 rounded-full bg-neon-cyan shadow-[0_0_8px_2px_var(--color-neon-cyan)]" />
-                  Сейчас
+                  {nowLabel}
                 </span>
               )}
             </div>

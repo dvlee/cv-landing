@@ -1,13 +1,18 @@
-import { skillGroups, skillsFamiliar } from "@/entities/skill";
+import { getSkillGroups, getSkillsFamiliar } from "@/entities/skill";
+import { getDictionary, type Locale } from "@/shared/i18n";
 import { IconLayers, Reveal, SectionTitle, skillIcons } from "@/shared/ui";
 
-export function Skills() {
+export function Skills({ locale }: { locale: Locale }) {
+  const skillGroups = getSkillGroups(locale);
+  const skillsFamiliar = getSkillsFamiliar(locale);
+  const { skills } = getDictionary(locale).sections;
+
   return (
     <section id="skills" className="py-16 sm:py-20">
       <Reveal>
         <SectionTitle
-          kicker="// tech stack"
-          title="Навыки"
+          kicker={skills.kicker}
+          title={skills.title}
           icon={<IconLayers className="h-7 w-7" />}
         />
       </Reveal>
@@ -48,7 +53,7 @@ export function Skills() {
         className="mt-4 flex flex-col gap-3 rounded-2xl border border-white/5 px-5 py-4 sm:flex-row sm:items-center"
       >
         <span className="shrink-0 font-mono text-xs uppercase tracking-widest text-muted">
-          Знаком, использую по необходимости
+          {skills.familiar}
         </span>
         <div className="flex flex-wrap gap-2">
           {skillsFamiliar.map((item) => (

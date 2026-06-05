@@ -1,10 +1,29 @@
 import { ImageResponse } from "next/og";
+import { hasLocale } from "@/shared/i18n";
 
 export const alt = "Denis Lee — Senior Frontend Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function Image() {
+const copy = {
+  ru: {
+    name: "Ли Денис",
+    tags: ["15+ лет", "финтех и enterprise", "Ташкент, UZ"],
+  },
+  en: {
+    name: "Denis Lee",
+    tags: ["15+ years", "fintech & enterprise", "Tashkent, UZ"],
+  },
+} as const;
+
+export default async function Image({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  const { name, tags } = copy[hasLocale(lang) ? lang : "ru"];
+
   return new ImageResponse(
     <div
       style={{
@@ -62,7 +81,7 @@ export default function Image() {
           lineHeight: 1.05,
         }}
       >
-        Denis Lee
+        {name}
       </div>
       <div
         style={{
@@ -75,7 +94,7 @@ export default function Image() {
         React · Next.js · TypeScript
       </div>
       <div style={{ display: "flex", marginTop: 44 }}>
-        {["15+ years", "fintech & enterprise", "Tashkent, UZ"].map((t) => (
+        {tags.map((t) => (
           <div
             key={t}
             style={{

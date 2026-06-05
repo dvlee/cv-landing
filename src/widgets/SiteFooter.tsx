@@ -1,4 +1,6 @@
-import { profile } from "@/entities/profile";
+import Image from "next/image";
+import { getProfile } from "@/entities/profile";
+import { getDictionary, type Locale } from "@/shared/i18n";
 import {
   IconExternal,
   IconGithub,
@@ -6,9 +8,12 @@ import {
   IconPhone,
   IconTelegram,
 } from "@/shared/ui";
-import Image from "next/image";
 
-export function SiteFooter() {
+export function SiteFooter({ locale }: { locale: Locale }) {
+  const profile = getProfile(locale);
+  const dict = getDictionary(locale);
+  const { footer, common } = dict;
+
   return (
     <footer className="relative my-12 rounded-3xl">
       <div className="holo-border glass rounded-3xl p-10 sm:p-16">
@@ -16,13 +21,13 @@ export function SiteFooter() {
           {/* content */}
           <div className="text-center lg:text-left">
             <h2 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
-              Давайте <span className="text-gradient">создадим</span>
+              {footer.ctaPre}
+              <span className="text-gradient">{footer.ctaHi}</span>
               <br />
-              что-то крутое
+              {footer.ctaPost}
             </h2>
             <p className="mx-auto mt-4 max-w-md text-muted lg:mx-0">
-              Открыт к интересным проектам и предложениям. Напишите — отвечу
-              быстро.
+              {footer.subtitle}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
               <a
@@ -66,12 +71,11 @@ export function SiteFooter() {
                 className="glass inline-flex h-11 items-center gap-2 rounded-xl px-4 text-sm text-fg transition hover:neon-edge hover:text-neon-cyan"
               >
                 <IconExternal className="h-4 w-4" />
-                <span>Резюме hh.uz</span>
+                <span>{common.resumeHh}</span>
               </a>
             </div>
             <div className="mt-10 font-mono text-xs text-muted">
-              © {new Date().getFullYear()} {profile.name} · Senior Frontend
-              Engineer
+              © {new Date().getFullYear()} {profile.name} · {profile.role}
             </div>
           </div>
 

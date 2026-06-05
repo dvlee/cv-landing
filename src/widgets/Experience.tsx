@@ -1,8 +1,12 @@
-import { experience, JobCardRow } from "@/entities/experience";
+import { getExperience, JobCardRow } from "@/entities/experience";
+import { getDictionary, type Locale } from "@/shared/i18n";
 import { IconBriefcase, Reveal, SectionTitle } from "@/shared/ui";
 import { JobCard } from "../entities/experience/ui/JobCard";
 
-export function Experience() {
+export function Experience({ locale }: { locale: Locale }) {
+  const experience = getExperience(locale);
+  const { experience: t } = getDictionary(locale).sections;
+
   const fullJobs = experience.filter((job) => !job.compact);
   const earlyJobs = experience.filter((job) => job.compact);
 
@@ -10,8 +14,8 @@ export function Experience() {
     <section id="experience" className="py-16 sm:py-20">
       <Reveal>
         <SectionTitle
-          kicker="// career log"
-          title="Опыт работы"
+          kicker={t.kicker}
+          title={t.title}
           icon={<IconBriefcase className="h-7 w-7" />}
         />
       </Reveal>
@@ -22,7 +26,12 @@ export function Experience() {
 
         <div className="flex flex-col gap-6">
           {fullJobs.map((job, i) => (
-            <JobCard key={job.company + job.period} job={job} index={i} />
+            <JobCard
+              key={job.company + job.period}
+              job={job}
+              index={i}
+              nowLabel={t.now}
+            />
           ))}
 
           {/* early experience — condensed */}
@@ -30,11 +39,10 @@ export function Experience() {
             <span className="absolute -left-[25px] top-6 h-2.5 w-2.5 rounded-full bg-neon-purple/40 sm:-left-[31px]" />
             <div className="glass rounded-2xl p-6 sm:p-7">
               <h3 className="font-display text-lg font-bold text-fg">
-                Ранний опыт
+                {t.earlyTitle}
               </h3>
               <p className="mt-0.5 font-mono text-xs text-muted">
-                2010 — 2020 · вёрстка, WordPress, Drupal, Fullstack (Yii
-                Framework)
+                {t.earlyCaption}
               </p>
               <ul className="mt-4 divide-y divide-white/5">
                 {earlyJobs.map((job) => (

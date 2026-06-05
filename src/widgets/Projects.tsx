@@ -1,4 +1,5 @@
-import { projects } from "@/entities/project";
+import { getProjects } from "@/entities/project";
+import { getDictionary, type Locale } from "@/shared/i18n";
 import {
   IconExternal,
   IconLock,
@@ -7,13 +8,16 @@ import {
   SectionTitle,
 } from "@/shared/ui";
 
-export function Projects() {
+export function Projects({ locale }: { locale: Locale }) {
+  const projects = getProjects(locale);
+  const { projects: t } = getDictionary(locale).sections;
+
   return (
     <section id="projects" className="py-16 sm:py-20">
       <Reveal>
         <SectionTitle
-          kicker="// selected work"
-          title="Проекты"
+          kicker={t.kicker}
+          title={t.title}
           icon={<IconRocket className="h-7 w-7" />}
         />
       </Reveal>
@@ -40,7 +44,7 @@ export function Projects() {
                     href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Открыть ${p.title}`}
+                    aria-label={`${t.open} ${p.title}`}
                     className="shrink-0 text-muted transition hover:text-neon-cyan"
                   >
                     <IconExternal className="h-4 w-4" />

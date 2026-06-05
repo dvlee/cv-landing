@@ -1,14 +1,18 @@
-import { profile } from "@/entities/profile";
-import { IconBolt, Reveal, SectionTitle } from "@/shared/ui";
 import Image from "next/image";
+import { getProfile } from "@/entities/profile";
+import { getDictionary, type Locale } from "@/shared/i18n";
+import { IconBolt, Reveal, SectionTitle } from "@/shared/ui";
 
-export function About() {
+export function About({ locale }: { locale: Locale }) {
+  const profile = getProfile(locale);
+  const { about } = getDictionary(locale).sections;
+
   return (
     <section id="about" className="py-16 sm:py-20">
       <Reveal>
         <SectionTitle
-          kicker="// whoami"
-          title="Обо мне"
+          kicker={about.kicker}
+          title={about.title}
           icon={<IconBolt className="h-7 w-7" />}
         />
       </Reveal>

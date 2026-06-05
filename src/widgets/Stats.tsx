@@ -1,7 +1,10 @@
-import { stats } from "@/entities/profile";
+import { getStats } from "@/entities/profile";
+import type { Locale } from "@/shared/i18n";
 import { Corner, Reveal } from "@/shared/ui";
 
-export function Stats() {
+export function Stats({ locale }: { locale: Locale }) {
+  const stats = getStats(locale);
+
   return (
     <section className="grid grid-cols-2 gap-4 py-6 lg:grid-cols-4">
       {stats.map((s, i) => (

@@ -1,4 +1,6 @@
-import { profile } from "@/entities/profile";
+import Image from "next/image";
+import { getProfile } from "@/entities/profile";
+import { getDictionary, type Locale } from "@/shared/i18n";
 import {
   IconExternal,
   IconGithub,
@@ -8,9 +10,11 @@ import {
   IconTelegram,
   PrintButton,
 } from "@/shared/ui";
-import Image from "next/image";
 
-export function Hero() {
+export function Hero({ locale }: { locale: Locale }) {
+  const profile = getProfile(locale);
+  const dict = getDictionary(locale);
+
   return (
     <section
       id="top"
@@ -19,20 +23,15 @@ export function Hero() {
       <div className="reveal order-2 lg:order-1">
         <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-neon-purple/30 bg-neon-purple/10 px-4 py-1.5 font-mono text-xs tracking-widest text-neon-cyan animate-pulse-glow">
           <span className="h-2 w-2 rounded-full bg-neon-cyan shadow-[0_0_10px_2px_var(--color-neon-cyan)]" />
-          ОТКРЫТ К ПРЕДЛОЖЕНИЯМ
+          {dict.hero.badge}
         </div>
 
         <h1 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl">
-          <span className="text-fg">Ли Денис</span>
-          <br />
-          <span className="text-fg">Витальевич</span>
-          {/* <span className="text-gradient">Витальевич</span> */}
+          <span className="text-fg">{profile.name}</span>
         </h1>
 
-        {/* role + value proposition */}
-        {/* <p className="mt-5 font-display text-2xl font-bold tracking-tight text-fg sm:text-3xl"> */}
         <p className="mt-5 font-display text-2xl font-bold tracking-tight text-gradient sm:text-3xl">
-          Senior Frontend Engineer
+          {profile.role}
         </p>
 
         <div className="mt-3 flex flex-wrap items-center gap-x-2.5 gap-y-1 font-mono text-sm text-neon-cyan/90 sm:text-base">
@@ -45,11 +44,20 @@ export function Hero() {
         </div>
 
         <p className="mt-5 max-w-xl text-base leading-relaxed text-fg/80 sm:text-lg">
-          <span className="font-semibold text-fg">15+ лет</span> в коммерческой
-          веб-разработке. Создаю <span className="text-neon-cyan">fintech</span>
-          , <span className="text-neon-cyan">банковские</span> и{" "}
-          <span className="text-neon-cyan">enterprise</span>-решения на React,
-          Next.js и TypeScript.
+          {dict.hero.lead.map((seg) => (
+            <span
+              key={seg.t}
+              className={
+                seg.em === "fg"
+                  ? "font-semibold text-fg"
+                  : seg.em === "cyan"
+                    ? "text-neon-cyan"
+                    : undefined
+              }
+            >
+              {seg.t}
+            </span>
+          ))}
         </p>
 
         <p className="mt-4 max-w-xl font-mono text-sm text-muted">
@@ -110,15 +118,18 @@ export function Hero() {
             className="glass inline-flex h-11 items-center gap-2 rounded-xl px-4 text-sm text-fg transition hover:neon-edge hover:text-neon-cyan"
           >
             <IconExternal className="h-4 w-4" />
-            <span>Резюме hh.uz</span>
+            <span>{dict.common.resumeHh}</span>
           </a>
-          <PrintButton className="holo-border inline-flex h-11 items-center gap-2 rounded-xl px-4 text-sm font-medium text-fg transition hover:text-neon-cyan print:hidden" />
+          <PrintButton
+            label={dict.print.label}
+            fileName={dict.print.fileName}
+            className="holo-border inline-flex h-11 items-center gap-2 rounded-xl px-4 text-sm font-medium text-fg transition hover:text-neon-cyan print:hidden"
+          />
         </div>
       </div>
 
       {/* photo */}
       <div className="order-1 flex justify-center lg:order-2">
-        {/* <div className="relative animate-float"> */}
         <div className="relative">
           {/* ambient glow behind the cutout */}
           <div className="absolute inset-20 -z-10 rounded-full bg-[radial-gradient(circle_at_center,var(--color-neon-cyan),transparent_70%)] opacity-30 blur-3xl animate-pulse-glow" />
@@ -129,7 +140,6 @@ export function Hero() {
             height={2528}
             priority
             sizes="(max-width: 640px) 260px, 340px"
-            // className="relative h-auto w-[260px] object-contain drop-shadow-[0_0_25px_var(--color-neon-cyan)] sm:w-[340px]"
             className="relative h-auto max-w-full aspect-[1/1.2] object-top object-cover"
           />
           {/* orbit badge */}
